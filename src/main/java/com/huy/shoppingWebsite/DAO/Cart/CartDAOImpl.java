@@ -15,6 +15,7 @@ public class CartDAOImpl implements CartDAO{
         this.entityManager = entityManager;
     }
     @Override
+    @Transactional
     public void save(Cart cart) {
         entityManager.persist(cart);
     }
@@ -32,6 +33,7 @@ public class CartDAOImpl implements CartDAO{
     }
 
     @Override
+    @Transactional
     public void update(Cart cart) {
         entityManager.merge(cart);
     }

@@ -1,8 +1,8 @@
-package com.huy.shoppingWebsite.DAO.Category;
+package com.huy.shoppingWebsite.Service.Category;
 
 import com.huy.shoppingWebsite.Entity.Category;
 
-public interface CategoryDAO {
+public interface CategoryService {
     void save(Category category);
     Category findCategoryById(int id);
     void update(Category category);
