@@ -4,6 +4,8 @@ import com.huy.shoppingWebsite.DAO.Category.CategoryDAO;
 import com.huy.shoppingWebsite.Entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryDAO categoryDAO;
 
@@ -36,4 +38,10 @@ public class CategoryServiceImpl implements CategoryService {
     public Category findCategoryAndProductsByCategoryId(int id) {
         return categoryDAO.findCategoryAndProductsByCategoryId(id);
     }
+
+    @Override
+    public List<Category> findAllCategory() {
+        return categoryDAO.findAllCategory();
+    }
+
 }

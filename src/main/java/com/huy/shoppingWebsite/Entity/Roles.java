@@ -9,6 +9,10 @@ import lombok.Setter;
 @Setter
 @Table(name = "Roles")
 public class Roles {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "account_id")

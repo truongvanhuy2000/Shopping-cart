@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CollectionId;
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @Table(name = "ProductInformation")
 public class ProductInformation {
     @Id

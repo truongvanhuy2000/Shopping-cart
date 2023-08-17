@@ -7,6 +7,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
 @Repository
 public class CategoryDAOImpl implements CategoryDAO {
     private final EntityManager entityManager;
@@ -45,5 +48,11 @@ public class CategoryDAOImpl implements CategoryDAO {
         );
         query.setParameter("data", id);
         return query.getSingleResult();
+    }
+
+    @Override
+    public List<Category> findAllCategory() {
+        TypedQuery<Category> query = entityManager.createQuery("from Category", Category.class);
+        return query.getResultList();
     }
 }

@@ -8,7 +8,6 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
-import java.security.Security;
 
 @Configuration
 public class GlobalSecurityConfig {
@@ -28,6 +27,21 @@ public class GlobalSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests()
+        httpSecurity.authorizeHttpRequests(httpRequests ->
+                httpRequests
+                        .requestMatchers("/").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated())
+                .formLogin(login -> login
+                        .loginPage("/loginPage")
+                        .loginProcessingUrl("/authenticateTheUser")
+                        .permitAll())
+                .logout(logout -> logout.permitAll())
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .accessDeniedPage("/access-denied"));
+
+        return httpSecurity.build();
+
     }
+
 }

@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Setter @Getter
 @Table(name = "Category")
 public class Category {
     @Id

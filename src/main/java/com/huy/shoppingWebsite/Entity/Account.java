@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Setter @Getter
 @Table(name="Account")
 public class Account {
     @Id
